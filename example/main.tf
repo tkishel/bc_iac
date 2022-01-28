@@ -43,3 +43,12 @@ resource "aws_s3_bucket" "xxx" {
     yor_trace            = "93977a37-0ec3-4dc2-9ecf-ebef7fa2d429"
   }
 }
+
+resource "aws_s3_bucket" "zzz" {
+  bucket        = "aaa-pc-iac"
+  acl           = "public-read-write"
+  force_destroy = true
+  versioning {
+    enabled = false
+  }
+}
