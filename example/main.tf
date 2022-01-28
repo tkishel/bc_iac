@@ -52,3 +52,12 @@ resource "aws_s3_bucket" "zzz" {
     enabled = false
   }
 }
+
+resource "aws_s3_bucket" "aaa" {
+  bucket        = "bbb-pc-iac"
+  acl           = "public-read-write"
+  force_destroy = true
+  versioning {
+    enabled = false
+  }
+}
