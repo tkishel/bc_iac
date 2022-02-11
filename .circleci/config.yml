@@ -4,8 +4,6 @@ orbs:
   bridgecrew: bridgecrew/bridgecrew@1.0.3
 jobs: 
   build: 
-    environment: 
-      PRISMA_API_URL: "https://api.prismacloud.io"
     executor: bridgecrew/default
     steps: 
       - checkout
