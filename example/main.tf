@@ -19,4 +19,7 @@ resource "aws_s3_bucket" "foo" {
     git_repo             = "bc_iac"
     yor_trace            = "265e56dc-3099-4efe-b116-476178ee73fb"
   }
+  versioning {
+    enabled = true
+  }
 }
