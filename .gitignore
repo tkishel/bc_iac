@@ -1,0 +1,14 @@
+#
+
+.DS_Store
+
+#
+
+**/.idea/*
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+.terraformrc
+terraform.rc
+crash.log
