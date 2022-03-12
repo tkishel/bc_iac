@@ -1,10 +1,10 @@
 {
-    "version": "2.2.2",
+    "version": "2.0.0",
     "tasks": [
         {
             "label": "twistcli_scan_image",
             "type": "shell",
-            "command": "DOCKER_SCAN_SUGGEST=false docker build -t twistcli_scan_me - < ${relativeFile} && twistcli images scan --address https://xxx -u yyy -p zzz --publish=FALSE --details twistcli_scan_me && docker image rm twistcli_scan_me",
+            "command": "DOCKER_SCAN_SUGGEST=false docker build -t twistcli_scan_me - < ${relativeFile} && twistcli images scan --address https://console-master-demo2201.tkishel.demo.twistlock.com -u tkishel_paloaltonetworks_com -p Macintosh2 --publish=FALSE --details twistcli_scan_me && docker image rm twistcli_scan_me",
             "problemMatcher": [],
             "group": {
                 "kind": "test",
@@ -18,7 +18,35 @@
         {
             "label": "checkov_scan_image",
             "type": "shell",
-            "command": "DOCKER_SCAN_SUGGEST=false docker build -t checkov_scan_me - < ${relativeFile} && checkov --bc-api-key bbb --dockerfile-path ${relativeFile} --docker-image checkov_scan_me --repo-id tkishel/twisty && docker image rm checkov_scan_me",
+            "command": "DOCKER_SCAN_SUGGEST=false docker build -t checkov_scan_me - < ${relativeFile} && checkov --bc-api-key ${config:checkov.token} --dockerfile-path ${relativeFile} --docker-image checkov_scan_me --repo-id tkishel/twisty && docker image rm checkov_scan_me",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true,
+                "reveal": "always"
+              }
+        },
+        {
+            "label": "checkov_scan_file",
+            "type": "shell",
+            "command": "checkov --bc-api-key ${config:checkov.token}  --file ${relativeFile}",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true,
+                "reveal": "always"
+              }
+        },
+        {
+            "label": "checkov_scan_directory",
+            "type": "shell",
+            "command": "checkov --bc-api-key ${config:checkov.token} --directory ${relativeFileDirname}",
             "problemMatcher": [],
             "group": {
                 "kind": "test",
